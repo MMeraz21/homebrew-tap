@@ -11,6 +11,11 @@ cask "stickynote" do
 
   app "StickyNote.app"
 
+  postflight do
+    system_command "/usr/bin/xattr",
+                   args: ["-cr", "#{appdir}/StickyNote.app"]
+  end
+
   zap trash: [
     "~/Library/Preferences/com.local.StickyNote.plist",
   ]
